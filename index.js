@@ -8,7 +8,7 @@ async function robo() {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    let all_metas = { 'target': [] }
+    let all_metas = { 'targets': [] }
 
     for (let i = 1; i <= 17; i++) {
         let link_ods = base_link + i + '/';
@@ -24,7 +24,7 @@ async function robo() {
                 let meta_id = item.children[0].textContent;
                 let meta_text = item.children[1].textContent;
 
-                metas.push({ 'id': meta_id, 'description': meta_text });
+                metas.unshift({ 'id': meta_id, 'description': meta_text });
             }
 
             return metas;
